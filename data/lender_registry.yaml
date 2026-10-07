@@ -1,0 +1,99 @@
+# Seed registry: one canonical lender -> its identity in each source.
+#
+# Why this file exists: the same company is spelled differently everywhere.
+#   HMDA   files under the *bank subsidiary's* LEI  ("Wells Fargo Bank, National Association")
+#   CFPB   uses its own company string             ("WELLS FARGO & COMPANY")
+#   EDGAR  files under the *holding company's* CIK  ("WELLS FARGO & COMPANY/MN")
+#
+# Fields left null are resolved at runtime (HMDA filer list, CFPB company
+# suggest, SEC ticker file) and cached. Run `python scripts/verify_registry.py`
+# to check every pinned value against the live sources.
+
+lenders:
+  - id: wells_fargo
+    display_name: Wells Fargo
+    aliases: [wells fargo, wells, wfc, wells fargo bank]
+    cik: 72971
+    cfpb_company: "WELLS FARGO & COMPANY"
+    hmda_name_hint: "Wells Fargo Bank"
+    lei: null
+
+  - id: jpmorgan_chase
+    display_name: JPMorgan Chase
+    aliases: [jpmorgan, jp morgan, chase, jpm, jpmorgan chase bank]
+    cik: 19617
+    cfpb_company: "JPMORGAN CHASE & CO."
+    hmda_name_hint: "JPMorgan Chase Bank"
+    lei: null
+
+  - id: bank_of_america
+    display_name: Bank of America
+    aliases: [bank of america, bofa, boa, bac]
+    cik: 70858
+    cfpb_company: "BANK OF AMERICA, NATIONAL ASSOCIATION"
+    hmda_name_hint: "Bank of America"
+    lei: null
+
+  - id: citi
+    display_name: Citi
+    aliases: [citi, citibank, citigroup]
+    cik: 831001
+    cfpb_company: "CITIBANK, N.A."
+    hmda_name_hint: "Citibank"
+    lei: null
+
+  - id: us_bank
+    display_name: U.S. Bank
+    aliases: [us bank, u.s. bank, us bancorp, usb]
+    cik: 36104
+    cfpb_company: null
+    hmda_name_hint: "U.S. Bank"
+    lei: null
+
+  - id: pnc
+    display_name: PNC
+    aliases: [pnc, pnc bank, pnc financial]
+    cik: 713676
+    cfpb_company: null
+    hmda_name_hint: "PNC Bank"
+    lei: null
+
+  - id: truist
+    display_name: Truist
+    aliases: [truist, truist bank, suntrust, bb&t]
+    cik: 92230
+    cfpb_company: null
+    hmda_name_hint: "Truist Bank"
+    lei: null
+
+  - id: rocket
+    display_name: Rocket Mortgage
+    aliases: [rocket, rocket mortgage, quicken loans, rocket companies, rkt]
+    cik: 1805284
+    cfpb_company: null
+    hmda_name_hint: "Rocket Mortgage"
+    lei: null
+
+  - id: mr_cooper
+    display_name: Mr. Cooper
+    aliases: [mr cooper, mr. cooper, nationstar, nationstar mortgage]
+    cik: 933136
+    cfpb_company: null
+    hmda_name_hint: "Nationstar Mortgage"
+    lei: null
+
+  - id: uwm
+    display_name: United Wholesale Mortgage
+    aliases: [uwm, united wholesale mortgage, uwm holdings]
+    cik: 1783398
+    cfpb_company: null
+    hmda_name_hint: "United Wholesale Mortgage"
+    lei: null
+
+  - id: loandepot
+    display_name: loanDepot
+    aliases: [loandepot, loan depot, ldi]
+    cik: 1831631
+    cfpb_company: null
+    hmda_name_hint: "loanDepot.com"
+    lei: null

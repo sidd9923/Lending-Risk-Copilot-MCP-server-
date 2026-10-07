@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "lending-risk": {
+      "command": "/absolute/path/to/lending-risk-mcp/.venv/bin/lending-risk-mcp",
+      "env": {
+        "LRC_USER": "sid",
+        "LRC_ROLE": "reviewer",
+        "SEC_USER_AGENT": "Your Name you@example.com",
+        "FRED_API_KEY": "your-fred-key",
+        "LINEAR_API_KEY": "lin_api_...",
+        "LINEAR_TEAM_ID": "your-team-uuid"
+      }
+    }
+  }
+}

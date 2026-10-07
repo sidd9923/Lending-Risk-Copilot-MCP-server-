@@ -1,0 +1,39 @@
+# Who can do what.
+#
+# Permissions are checked twice:
+#   1. at startup: tools the caller's role can't use are never registered,
+#      so the model doesn't even see them in tools/list.
+#   2. at call time: every tool re-checks before touching a source
+#      (defense in depth, in case registration and policy ever drift).
+#
+# Field-level rules live here too: complaint narratives are consumer-written
+# free text. CFPB scrubs PII, but "need to know" still applies.
+
+permissions:
+  lender:resolve: Resolve a lender name to HMDA LEI / CFPB company / SEC CIK
+  hmda:read: Aggregate mortgage application outcomes
+  complaints:read: Complaint counts, trends, and structured fields
+  complaints:narratives: Consumer-written complaint narratives
+  filings:read: SEC 10-K / 10-Q risk factor excerpts
+  macro:read: FRED macro series
+  tickets:create: Create review tickets in Linear
+  admin:health: Source health and circuit breaker state
+
+roles:
+  viewer:
+    description: Read-only, aggregates only. Good default for demos.
+    grants: [lender:resolve, hmda:read, complaints:read, macro:read]
+
+  analyst:
+    description: Full read access except narratives.
+    inherits: [viewer]
+    grants: [filings:read, admin:health]
+
+  reviewer:
+    description: Compliance reviewer. Can read narratives and open tickets.
+    inherits: [analyst]
+    grants: [complaints:narratives, tickets:create]
+
+  admin:
+    description: Everything.
+    grants: ["*"]
